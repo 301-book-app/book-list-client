@@ -12,14 +12,19 @@
   <script id="book-template" type="text/x-handlebars-template">
     <section class="book">
       <img src="{{image_url}}">
-      <h2>{{title}}</h2>
-      <h3>{{author}}</h2>
+      <h2 class="title">{{title}}</h2>
+      <h3 class="author">{{author}}</h2>
+    </section>
+  </script>
+  <script id="error-template" type="text/x-handlebars-template">
+    <section id="error">
+      <p id="error-message">{{body}}</p>
     </section>
   </script>
 </head>
 <body>
   <h1>Books</h1>
-  <section id="books-list"></section>
+  <section id="book-list"></section>
 
   <p id="total-books">Total Books: </p>
   <section id="about">
@@ -32,5 +37,8 @@
   <script src="scripts/models/book.js"></script>
   <script src="scripts/views/book-view.js"></script>
   <script src="scripts/views/error-view.js"></script>
+  <script>
+    app.Book.fetchAll(app.bookView.initIndexPage);
+  </script>
 </body>
 </html>

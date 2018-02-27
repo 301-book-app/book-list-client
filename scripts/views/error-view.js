@@ -1,8 +1,8 @@
 'use strict';
 
-const app = app || {};
+var app = app || {};
 
-(function () {
+(function (module) {
   const errorView = {};
 
   errorView.initErrorPage = function (err) {
@@ -14,4 +14,5 @@ const app = app || {};
   };
 
   module.errorView = errorView;
+
 })(app);
