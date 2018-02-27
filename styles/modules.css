@@ -1,0 +1,9 @@
+.book .author {
+  font-family: cursive;
+  color: #ccc;
+}
+
+.book .title {
+  font-family: fantasy;
+  color: #ddd;
+}
