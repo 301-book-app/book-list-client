@@ -4,8 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>301 Book App</title>
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/modules.css">
+  <link rel="stylesheet" href="styles/icons.css">
+  <script id="book-template" type="text/x-handlebars-template">
+    <section class="book">
+      <img src="{{image_url}}">
+      <h2 class="title">{{title}}</h2>
+      <h3 class="author">{{author}}</h2>
+    </section>
+  </script>
+  <script id="error-template" type="text/x-handlebars-template">
+      <p id="error-message">{{body}}</p>
+  </script>
+  <script id="error-template" type="text/x-handlebars-template">
+      <p>{{status}}: {{statusText}}</p>
+  </script>
 </head>
 <body>
-  <h1>Hello World!</h1>
+  <h1>Books</h1>
+  <section id="book-list"></section>
+
+  <p id="total-books"></p>
+  <section id="about">
+    <h3>About</h3>
+    <p>we are awesome!</p>
+  </section>
+
+  <section id="error-view">
+      <h3>Something went wrong</h3>
+      <section id="error-message"></section>
+  </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+  <script src="scripts/models/book.js"></script>
+  <script src="scripts/views/book-view.js"></script>
+  <script src="scripts/views/error-view.js"></script>
+  <script>
+    app.Book.fetchAll(app.bookView.initIndexPage);
+  </script>
 </body>
 </html>
