@@ -26,10 +26,12 @@ const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
     Book.all = rows.sort((a,b) => b.title - a.title).map(book => new Book(book));
   };
 
-  Book.fetchAll = callback => $.get(`${__API_URL__}/books`)
-    .then(Book.loadAll)
-    .then(callback)
-    .catch(errorCB);
+  Book.fetchAll = callback => {
+    $.get(`${__API_URL__}/books`)
+      .then(Book.loadAll)
+      .then(callback)
+      .catch(errorCB);
+  };
 
   module.Book = Book;
 })(app);
