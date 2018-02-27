@@ -1,9 +1,9 @@
 'use strict';
 
-const app = app || {};
+var app = app || {};
 
-//const __API_URL__ = 'http://localhost:3000';
-const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
+const __API_URL__ = 'http://localhost:3000';
+// const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
 
 ((module) =>{
   function errorCB(err) {
@@ -15,8 +15,8 @@ const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
     Object.keys(bookObj).forEach(key => this[key] = bookObj[key]);
   }
 
-  Book.prototype.toHTML = function () {
-    let template = Handlebars.compile($('#book-template').text());
+  Book.prototype.toHtml = function () {
+    let template = Handlebars.compile($('#book-template').html());
     return template(this);
   };
 

@@ -1,7 +1,6 @@
 'use strict';
 
-const app = app || {};
-
+var app = app || {};
 
 ((module) => {
   const bookView = {};
@@ -9,7 +8,9 @@ const app = app || {};
   bookView.initIndexPage = function() {
     $('#about').hide();
     $('.book-view').show()//TODO build book-view
-    module.Book.all.map(book => $('#book-list').append(book.toHtml()));
+    app.Book.all.map(book => $('#book-list').append(book.toHtml()));
   };
+
+  module.bookView = bookView;
 
 })(app);
