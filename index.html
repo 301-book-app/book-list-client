@@ -17,14 +17,10 @@
     </section>
   </script>
   <script id="error-template" type="text/x-handlebars-template">
-    <section id="error">
       <p id="error-message">{{body}}</p>
-    </section>
   </script>
   <script id="error-template" type="text/x-handlebars-template">
-    <section id="error">
-      <p id="error-message">{{description}}</p>
-    </section>
+      <p>{{status}}: {{statusText}}</p>
   </script>
 </head>
 <body>
@@ -37,6 +33,10 @@
     <p>we are awesome!</p>
   </section>
 
+  <section id="error-view">
+      <h3>Something went wrong</h3>
+      <section id="error-message"></section>
+  </section>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
   <script src="scripts/models/book.js"></script>

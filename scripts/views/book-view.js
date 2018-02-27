@@ -7,7 +7,8 @@ var app = app || {};
 
   bookView.initIndexPage = function() {
     $('#about').hide();
-    $('.book-view').show()//TODO build book-view
+    $('#error-view').hide();
+    $('#book-list').show();
     app.Book.all.map(book => $('#book-list').append(book.toHtml()));
   };
 
