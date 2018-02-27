@@ -7,3 +7,14 @@
   font-family: fantasy;
   color: #ddd;
 }
+
+.book {
+  margin: 5%;
+}
+
+.book img {
+  width: 60%;
+  align-content: center;
+  padding: .25em .8em;
+  border: solid brown 1px;
+}
