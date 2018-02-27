@@ -33,6 +33,12 @@ const __API_URL__ = 'http://localhost:3000';
       .catch(errorCB);
   };
 
+  Book.stats = () => {
+    return {
+      numBooks: Book.all.length,
+    };
+  };
+
   module.Book = Book;
 })(app);
 
