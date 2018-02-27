@@ -8,7 +8,7 @@ const __API_URL__ = 'http://localhost:3000';
 ((module) =>{
   function errorCB(err) {
     console.error(err);
-    module.errorView.initErrorPage(err);
+    app.errorView.initErrorPage(err);
   }
 
   function Book(bookObj) {
