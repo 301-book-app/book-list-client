@@ -2,11 +2,14 @@
 
 const app = app || {};
 
-//const __API_URL__ = 'http://localhost:3000';
-const __API_URL__ = 'https://'
 
-authorData = function() {
-    var template = Handlebars.compile($('#author-data-template').text());
-    let data = {};
-    return template(data);
+((module) => {
+  const bookView = {};
+
+  bookView.initIndexPage = function() {
+    $('#about').hide();
+    $('.book-view').show()//TODO build book-view
+    module.Book.all.map(book => $('#book-list').append(book.toHtml()));
   };
+
+})(app);
