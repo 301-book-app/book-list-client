@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="styles/layout.css">
   <link rel="stylesheet" href="styles/modules.css">
   <script id="book-template" type="text/x-handlebars-template">
-    <section class="book">
-      <img src="{{image_url}}">
+    <section class="book" data-bookid="{{book_id}}">
+      <a href="/books/{{book_id}}"><img src="{{image_url}}"></a>
       <h2 class="title">{{title}}</h2>
       <h3 class="author">{{author}}</h2>
     </section>
@@ -21,8 +21,9 @@
       <h2 class="title">{{title}}</h2>
       <h3 class="author">{{author}}</h2>
         <p class="isbn">{{isbn}}</p>
-        <a href="/books/:book_id" att="{{book_id}}"><img src="{{image_url}}"></a>
+        <img src="{{image_url}}">
         <p class="description">{{description}}</p>
+        <a href="/">Back to All Books</a>
     </section>
   </script>
   <script id="error-template" type="text/x-handlebars-template">

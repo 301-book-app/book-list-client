@@ -18,10 +18,12 @@ var app = app || {};
     $('#about-view').show();
   };
 
-  bookView.initDetailPage = () => {
+  bookView.initDetailPage = (ctx) => {
     $('.container').hide();
     $('#detail-view').show();
-    $('#detail-view').append(app.Book.displayDetails());
+    $('.detail').empty();
+    let template = Handlebars.compile($('#detail-template').html());
+    $('#detail-view').append(template(ctx));
   };
 
   bookView.initAddBook = () => {
