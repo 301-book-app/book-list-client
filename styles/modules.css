@@ -8,11 +8,13 @@
   font-family: fantasy;
   color: #ddd;
   font-size: 15pt;
+  margin-top: .5em;
 }
 
 .book {
   margin: 8%;
-  align-content: center;
+  padding: 10px;
+  text-align:center;
 }
 
 .book img {
@@ -22,8 +24,13 @@
 }
 
 h1 {
+  width: 100%;
   font-size: 20pt;
   text-decoration: underline;
   color: pink;
   font-weight: bold;
+  padding: 2em;
+  text-align: center;
+  background-color: darkblue;
+  margin: 0;
 }

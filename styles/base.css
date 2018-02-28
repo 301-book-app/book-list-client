@@ -1,9 +1,10 @@
 body {
   font-family: 'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
+  max-width: 800px;
+  background-color: firebrick;
 }
 
 #book-list{
   width: 100%;
-  max-width: 600px;
   background-color: #333;
 }
