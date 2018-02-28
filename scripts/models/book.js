@@ -36,12 +36,18 @@ const __API_URL__ = 'http://localhost:3000';
       .then(callback)
       .catch(errorCB);
 
-  Book.fetchOne = (callback) =>
+  Book.fetchOne = () =>
     $.get(`${__API_URL__}/api/v1/books/:id`)
       .then(results => Book.details = new Book(results))
       .catch(errorCB)
-      .then(Book.displayDetails(Book.details))//send back to display to view single book
+      .then(Book.displayDetails(Book.details))
       .catch(errorCB);
+
+  Book.createBook = (book) => {
+    $.post(`${__API_URL__}/api/v1/books/add`, book)
+      .then(() => page('/'))
+      .catch(errorCB);
+  };
 
   Book.stats = () => {
     return {
