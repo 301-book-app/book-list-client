@@ -6,13 +6,16 @@ var app = app || {};
   const bookView = {};
 
   bookView.initIndexPage = function() {
-    $('#about').hide();
-    $('#error-view').hide();
+    $('.container').hide();
     $('#book-list').show();
-    app.Book.all.map(book => $('#book-list').append(book.toHtml()));
+    module.Book.all.map(book => $('#book-list').append(book.toHtml()));
     $('#total-books').text(`Total Books: ${app.Book.all.length}`);
   };
 
   module.bookView = bookView;
 
 })(app);
+
+$(function() {
+  app.Book.fetchAll(app.bookView.initIndexPage);
+});

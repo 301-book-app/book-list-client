@@ -5,10 +5,10 @@ var app = app || {};
 // const __API_URL__ = 'http://localhost:3000';
 const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
 
-((module) =>{
+((module) => {
   function errorCB(err) {
     console.error(err);
-    app.errorView.initErrorPage(err);
+    module.errorView.initErrorPage(err);
   }
 
   function Book(bookObj) {
@@ -22,16 +22,14 @@ const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
 
   Book.all = [];
 
-  Book.loadAll = rows => {
+  Book.loadAll = rows =>
     Book.all = rows.sort((a,b) => b.title - a.title).map(book => new Book(book));
-  };
 
-  Book.fetchAll = callback => {
-    $.get(`${__API_URL__}/books`)
+  Book.fetchAll = callback =>
+    $.get(`${__API_URL__}/api/v1/books`)
       .then(Book.loadAll)
       .then(callback)
       .catch(errorCB);
-  };
 
   Book.stats = () => {
     return {
@@ -40,5 +38,5 @@ const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
   };
 
   module.Book = Book;
-})(app);
 
+})(app);

@@ -2,12 +2,11 @@
 
 var app = app || {};
 
-(function (module) {
+(function(module) {
   const errorView = {};
 
-  errorView.initErrorPage = function (err) {
-    $('.book-list').hide();
-    $('#about').hide();
+  errorView.initErrorPage = function(err) {
+    $('.container').hide();
     $('#error-view').show();
     $('#error-message').empty();
     let template = Handlebars.compile($('#error-template').text());
