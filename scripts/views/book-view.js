@@ -8,11 +8,17 @@ var app = app || {};
   bookView.initIndexPage = function() {
     $('.container').hide();
     $('#book-view').show();
+    $('#book-list').empty();
     module.Book.all.map(book => $('#book-list').append(book.toHtml()));
     $('#total-books').text(`Total Books: ${app.Book.all.length}`);
   };
 
-  bookView.initDetailPage = function() {
+  bookView.initAboutPage = () => {
+    $('.container').hide();
+    $('#about-view').show();
+  };
+
+  bookView.initDetailPage = () => {
     $('.container').hide();
     $('#detail-view').show();
     $('#detail-view').append(app.Book.displayDetails());
