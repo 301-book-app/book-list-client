@@ -20,6 +20,11 @@ const __API_URL__ = 'http://localhost:3000';
     return template(this);
   };
 
+  Book.prototype.displayDetails = function (data) {
+    let template = Handlebars.compile($('#detail-template').html());
+    return template(data);
+  };
+
   Book.all = [];
 
   Book.loadAll = rows =>
@@ -31,11 +36,11 @@ const __API_URL__ = 'http://localhost:3000';
       .then(callback)
       .catch(errorCB);
 
-  Book.fetchOne = callback =>
+  Book.fetchOne = (callback) =>
     $.get(`${__API_URL__}/api/v1/books/:id`)
       .then(results => Book.details = new Book(results))
       .catch(errorCB)
-      .then()//send back to display to view single book
+      .then(Book.displayDetails(Book.details))//send back to display to view single book
       .catch(errorCB);
 
   Book.stats = () => {

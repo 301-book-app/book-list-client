@@ -12,6 +12,12 @@ var app = app || {};
     $('#total-books').text(`Total Books: ${app.Book.all.length}`);
   };
 
+  bookView.initDetailPage = function() {
+    $('.container').hide();
+    $('#detail-view').show();
+    $('#detail-view').append(app.Book.displayDetails());
+  };
+
   module.bookView = bookView;
 
 })(app);
