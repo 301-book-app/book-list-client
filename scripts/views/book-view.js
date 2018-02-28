@@ -7,7 +7,7 @@ var app = app || {};
 
   bookView.initIndexPage = function() {
     $('.container').hide();
-    $('#book-list').show();
+    $('#book-view').show();
     module.Book.all.map(book => $('#book-list').append(book.toHtml()));
     $('#total-books').text(`Total Books: ${app.Book.all.length}`);
   };
