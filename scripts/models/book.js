@@ -2,8 +2,8 @@
 
 var app = app || {};
 
-// const __API_URL__ = 'http://localhost:3000';
-const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
+const __API_URL__ = 'http://localhost:3000';
+// const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
 
 ((module) => {
   function errorCB(err) {
@@ -29,6 +29,13 @@ const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
     $.get(`${__API_URL__}/api/v1/books`)
       .then(Book.loadAll)
       .then(callback)
+      .catch(errorCB);
+
+  Book.fetchOne = callback =>
+    $.get(`${__API_URL__}/api/v1/books/:id`)
+      .then(results => Book.details = new Book(results))
+      .catch(errorCB)
+      .then()//send back to display to view single book
       .catch(errorCB);
 
   Book.stats = () => {
