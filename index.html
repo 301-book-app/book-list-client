@@ -21,7 +21,7 @@
       <h2 class="title">{{title}}</h2>
       <h3 class="author">{{author}}</h2>
         <p class="isbn">{{isbn}}</p>
-        <img src="{{image_url}}">
+        <a href="/books/:book_id"><img src="{{image_url}}"></a>
         <p class="description">{{description}}</p>
     </section>
   </script>
@@ -74,7 +74,7 @@
     <section id="error-message"></section>
   </section>
 
-  <section id="about" class="container">
+  <section id="about-view" class="container">
     <ul>
       <li><i class="icon-github"><a href=""></a></i></li>
       <li><i class="icon-linkedin"><a href=""></a></i></li>
