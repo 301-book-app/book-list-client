@@ -21,7 +21,7 @@
       <h2 class="title">{{title}}</h2>
       <h3 class="author">{{author}}</h2>
         <p class="isbn">{{isbn}}</p>
-        <a href="/books/:book_id"><img src="{{image_url}}"></a>
+        <a href="/books/:book_id" att="{{book_id}}"><img src="{{image_url}}"></a>
         <p class="description">{{description}}</p>
     </section>
   </script>
@@ -41,10 +41,10 @@
           <a href="/">my Books</a>
         </li>
         <li>
-          <a href="books/new">new</a>
+          <a href="/books/new">new</a>
         </li>
         <li>
-          <a href="books/aboutus">about</a>
+          <a href="/books/aboutus">about</a>
         </li>
       </ul>
     </nav>
