@@ -18,15 +18,18 @@ var app = app || {};
     $('#about-view').show();
   };
 
-  bookView.initDetailPage = () => {
+  bookView.initDetailPage = (ctxBook) => {
     $('.container').hide();
     $('#detail-view').show();
-    $('#detail-view').append(app.Book.displayDetails());
+    $('.detail').empty();
+    let template = Handlebars.compile($('#detail-template').html());
+    $('#detail-view').append(template(ctxBook));
   };
 
   bookView.initAddBook = () => {
     $('.container').hide();
     $('#form-view').show();
+    $('#add-form').reset();
     $('#add-form').on('submit', event => {
       event.preventDefault();
 
@@ -44,7 +47,3 @@ var app = app || {};
   module.bookView = bookView;
 
 })(app);
-
-$(function() {
-  app.Book.fetchAll(app.bookView.initIndexPage);
-});

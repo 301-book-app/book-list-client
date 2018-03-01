@@ -2,8 +2,8 @@
 
 var app = app || {};
 
-// const __API_URL__ = 'http://localhost:3000';
-const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
+const __API_URL__ = 'http://localhost:3000';
+// const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
 
 ((module) => {
   function errorCB(err) {
@@ -20,11 +20,6 @@ const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
     return template(this);
   };
 
-  Book.prototype.displayDetails = function (data) {
-    let template = Handlebars.compile($('#detail-template').html());
-    return template(data);
-  };
-
   Book.all = [];
 
   Book.loadAll = rows =>
@@ -36,23 +31,16 @@ const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
       .then(callback)
       .catch(errorCB);
 
-  Book.fetchOne = () =>
-    $.get(`${__API_URL__}/api/v1/books/:id`)
-      .then(results => Book.details = new Book(results))
-      .catch(errorCB)
-      .then(Book.displayDetails(Book.details))
+  Book.fetchOne = (ctx, callback) =>
+    $.get(`${__API_URL__}/api/v1/books/${ctx.params.book_id}`)
+      .then(results => ctx.book = results[0])
+      .then(callback)
       .catch(errorCB);
 
   Book.createBook = (book) => {
     $.post(`${__API_URL__}/api/v1/books/add`, book)
       .then(page('/'))
       .catch(errorCB);
-  };
-
-  Book.stats = () => {
-    return {
-      numBooks: Book.all.length,
-    };
   };
 
   module.Book = Book;
