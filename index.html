@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="styles/layout.css">
   <link rel="stylesheet" href="styles/modules.css">
   <script id="book-template" type="text/x-handlebars-template">
-    <section class="book">
+    <section class="book" data-bookid="{{book_id}}">
       <a href="/books/{{book_id}}"><img src="{{image_url}}">
       <h2 class="title">{{title}}</h2>
       <h3 class="author">{{author}}</h2></a>
@@ -23,8 +23,20 @@
         <p class="isbn">{{isbn}}</p>
         <img src="{{image_url}}">
         <p class="description">{{description}}</p>
-        <a href="/"><button>Back</button></a>
+        <a href="/"><button id="back-button">Back</button></a>
+        <button id="update-button">Update</button></a>
+        <button id="delete-button" data-id={{book_id}}>Delete</button>
     </section>
+    <section id="update-form-view" class="update-container">
+        <form id="update-form">
+          <h3>Update Book</h3>
+          <input type="text" name="title" value="{{title}}">
+          <input type="text" name="author" value="{{author}}">
+          <input type="text" name="isbn" value="{{isbn}}">
+          <input type="text" name="image_url" value="{{image_url}}">
+          <textarea name="description" cols="50" rows="20">{{description}}</textarea>
+          <button type="submit" data-id={{book_id}}>Update Book</button>
+        </form>
   </script>
   <script id="error-template" type="text/x-handlebars-template">
       <p>{{status}}: {{statusText}}</p>
