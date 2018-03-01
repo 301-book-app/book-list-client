@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="styles/layout.css">
   <link rel="stylesheet" href="styles/modules.css">
   <script id="book-template" type="text/x-handlebars-template">
-    <section class="book">
+    <section class="book" data-bookid="{{book_id}}">
       <a href="/books/{{book_id}}"><img src="{{image_url}}">
       <h2 class="title">{{title}}</h2>
       <h3 class="author">{{author}}</h2></a>
@@ -23,8 +23,20 @@
         <p class="isbn">{{isbn}}</p>
         <img src="{{image_url}}">
         <p class="description">{{description}}</p>
-        <a href="/"><button>Back</button></a>
+        <a href="/"><button id="back-button">Back</button></a>
+        <button id="update-button">Update</button></a>
+        <button id="delete-button" data-id={{book_id}}>Delete</button>
     </section>
+    <section id="update-form-view" class="update-container">
+        <form id="update-form">
+          <h3>Update Book</h3>
+          <input type="text" name="title" value="{{title}}">
+          <input type="text" name="author" value="{{author}}">
+          <input type="text" name="isbn" value="{{isbn}}">
+          <input type="text" name="image_url" value="{{image_url}}">
+          <textarea name="description" cols="50" rows="20">{{description}}</textarea>
+          <button type="submit" data-id={{book_id}}>Update Book</button>
+        </form>
   </script>
   <script id="error-template" type="text/x-handlebars-template">
       <p>{{status}}: {{statusText}}</p>
@@ -38,6 +50,7 @@
         <li><a href="/">My Books</a></li>
         <li><a href="/books/new">Add a New Book</a></li>
         <li><a href="/books/aboutus">About the Developers</a></li>
+        <li><a href="/admin">Admin</a></li>
       </ul>
     </nav>
   </header>
@@ -75,6 +88,13 @@
     </ul>
   </section>
 
+  <section id="admin-view" class="container">
+    <form id="admin-form">
+      <input type="number" name="passphrase" placeholder="Enter your PIN">
+      <button>Submit</button>
+    </form>
+  </section>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
   <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
@@ -82,6 +102,7 @@
   <script src="scripts/views/error-view.js" type="text/javascript"></script>
   <script src="scripts/models/book.js" type="text/javascript"></script>
   <script src="scripts/views/book-view.js" type="text/javascript"></script>
+  <script src="scripts/views/adminView.js" type="text/javascript"></script>
   <script src="scripts/controller/routes.js" type="text/javascript"></script>
 </body>
 </html>

@@ -2,8 +2,8 @@
 
 var app = app || {};
 
-// const __API_URL__ = 'http://localhost:3000';
-const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
+const __API_URL__ = 'http://localhost:3000';
+// const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
 
 ((module) => {
   function errorCB(err) {
@@ -40,6 +40,25 @@ const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
   Book.createBook = (book) => {
     $.post(`${__API_URL__}/api/v1/books/add`, book)
       .then(page('/'))
+      .catch(errorCB);
+  };
+
+  Book.delete = (bookId) => {
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${bookId}`,
+      method: 'DELETE'
+    })
+      .then(page('/'))
+      .catch(errorCB);
+  };
+
+  Book.updateBook = (book) => {
+    $.ajax({
+      url: `${__API_URL__}/api/v1/books/${book.book_id}`,
+      method: 'PUT',
+      data: book
+    })
+      .then(page(`/books/${book.book_id}`))
       .catch(errorCB);
   };
 
