@@ -53,7 +53,6 @@ const __API_URL__ = 'http://localhost:3000';
   };
 
   Book.updateBook = (book) => {
-    console.log(book);
     $.ajax({
       url: `${__API_URL__}/api/v1/books/${book.book_id}`,
       method: 'PUT',
