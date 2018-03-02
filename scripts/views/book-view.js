@@ -9,7 +9,7 @@ var app = app || {};
     $('.container').hide();
     $('#book-view').show();
     $('#book-list').empty();
-    module.Book.all.map(book => $('#book-list').append(book.toHtml()));
+    app.Book.all.map(book => $('#book-list').append(book.toHtml()));
     $('#total-books').text(`Total Books: ${app.Book.all.length}`);
   };
 
@@ -64,6 +64,7 @@ var app = app || {};
         description: event.target.description.value,
       };
       module.Book.createBook(book);
+      $('#add-form').off();
     });
   };
 

@@ -39,7 +39,7 @@ const __API_URL__ = 'http://localhost:3000';
 
   Book.createBook = (book) => {
     $.post(`${__API_URL__}/api/v1/books/add`, book)
-      .then(page('/'))
+      .then(() => page('/'))
       .catch(errorCB);
   };
 
@@ -49,7 +49,7 @@ const __API_URL__ = 'http://localhost:3000';
         url: `${__API_URL__}/api/v1/books/${bookId}`,
         method: 'DELETE'
       })
-        .then(page('/'))
+        .then(() => page('/'))
         .catch(errorCB);
     } else module.adminView.initAdminPage();
   };
@@ -60,7 +60,7 @@ const __API_URL__ = 'http://localhost:3000';
       method: 'PUT',
       data: book
     })
-      .then(page(`/books/${book.book_id}`))
+      .then(() => page('/'))
       .catch(errorCB);
   };
 
