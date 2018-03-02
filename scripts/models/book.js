@@ -2,8 +2,8 @@
 
 var app = app || {};
 
-// const __API_URL__ = 'http://localhost:3000';
-const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
+const __API_URL__ = 'http://localhost:3000';
+// const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
 
 ((module) => {
   function errorCB(err) {
@@ -44,14 +44,14 @@ const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
   };
 
   Book.delete = (bookId) => {
-    if (localStorage.admin){
+    if (localStorage.admin === 'true') {
       $.ajax({
         url: `${__API_URL__}/api/v1/books/${bookId}`,
         method: 'DELETE'
       })
         .then(page('/'))
         .catch(errorCB);
-    } else module.initAdminPage();
+    } else module.adminView.initAdminPage();
   };
 
   Book.updateBook = (book) => {

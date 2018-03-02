@@ -21,7 +21,6 @@ var app = app || {};
     console.log(tokenEntered);
     $.get(`${__API_URL__}/admin`, {tokenEntered})
       .then(verified => {
-        console.log(verified);
         if (verified) {
           localStorage.admin = true;
           page('/');

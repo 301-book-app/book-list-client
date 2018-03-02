@@ -21,7 +21,7 @@ var app = app || {};
   bookView.initDetailPage = (ctxBook) => {
     $('.container').hide();
     $('#detail-view').show();
-    $('.detail').empty();
+    $('#detail-view').empty();
     let template = Handlebars.compile($('#detail-template').html());
     $('#detail-view').append(template(ctxBook));
     $('#update-form-view').hide();
@@ -29,7 +29,7 @@ var app = app || {};
       module.Book.delete(event.target.attributes['data-id'].value);
     });
     $('#update-button').on('click', () => {
-      if (localStorage.admin) {
+      if (localStorage.admin === 'true') {
         $('#update-form-view').show();
         $('#update-form').on('submit', (event) => {
           event.preventDefault();
@@ -43,6 +43,7 @@ var app = app || {};
             description: event.target.description.value,
           };
           module.Book.updateBook(book);
+          page('/');
         });
       }
       else module.adminView.initAdminPage();
