@@ -29,20 +29,23 @@ var app = app || {};
       module.Book.delete(event.target.attributes['data-id'].value);
     });
     $('#update-button').on('click', () => {
-      $('#update-form-view').show();
-      $('#update-form').on('submit', (event) => {
-        event.preventDefault();
+      if (localStorage.admin) {
+        $('#update-form-view').show();
+        $('#update-form').on('submit', (event) => {
+          event.preventDefault();
 
-        let book = {
-          book_id: $('#update-form button').data('id'),
-          title: event.target.title.value,
-          author: event.target.author.value,
-          isbn: event.target.isbn.value,
-          image_url: event.target.image_url.value,
-          description: event.target.description.value,
-        };
-        module.Book.updateBook(book);
-      });
+          let book = {
+            book_id: $('#update-form button').data('id'),
+            title: event.target.title.value,
+            author: event.target.author.value,
+            isbn: event.target.isbn.value,
+            image_url: event.target.image_url.value,
+            description: event.target.description.value,
+          };
+          module.Book.updateBook(book);
+        });
+      }
+      else module.adminView.initAdminPage();
     });
   };
 

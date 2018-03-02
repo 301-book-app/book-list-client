@@ -44,12 +44,14 @@ const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
   };
 
   Book.delete = (bookId) => {
-    $.ajax({
-      url: `${__API_URL__}/api/v1/books/${bookId}`,
-      method: 'DELETE'
-    })
-      .then(page('/'))
-      .catch(errorCB);
+    if (localStorage.admin){
+      $.ajax({
+        url: `${__API_URL__}/api/v1/books/${bookId}`,
+        method: 'DELETE'
+      })
+        .then(page('/'))
+        .catch(errorCB);
+    } else module.initAdminPage();
   };
 
   Book.updateBook = (book) => {
