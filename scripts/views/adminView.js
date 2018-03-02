@@ -18,10 +18,8 @@ var app = app || {};
     event.preventDefault();
 
     let tokenEntered = event.target.passphrase.value;
-console.log(tokenEntered);
     $.get(`${__API_URL__}/admin`, {tokenEntered})
       .then(verified => {
-        console.log(verified);
         if (verified) {
           localStorage.admin = true;
           page('/');

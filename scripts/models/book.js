@@ -39,17 +39,19 @@ const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
 
   Book.createBook = (book) => {
     $.post(`${__API_URL__}/api/v1/books/add`, book)
-      .then(page('/'))
+      .then(() => page('/'))
       .catch(errorCB);
   };
 
   Book.delete = (bookId) => {
-    $.ajax({
-      url: `${__API_URL__}/api/v1/books/${bookId}`,
-      method: 'DELETE'
-    })
-      .then(page('/'))
-      .catch(errorCB);
+    if (localStorage.admin === 'true') {
+      $.ajax({
+        url: `${__API_URL__}/api/v1/books/${bookId}`,
+        method: 'DELETE'
+      })
+        .then(() => page('/'))
+        .catch(errorCB);
+    } else module.adminView.initAdminPage();
   };
 
   Book.updateBook = (book) => {
@@ -58,7 +60,7 @@ const __API_URL__ = 'https://bp-bw-booklist.herokuapp.com';
       method: 'PUT',
       data: book
     })
-      .then(page(`/books/${book.book_id}`))
+      .then(() => page('/'))
       .catch(errorCB);
   };
 

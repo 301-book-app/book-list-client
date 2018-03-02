@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href=".">
   <title>301 Book App</title>
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/icons.css">
@@ -27,7 +28,7 @@
         <button id="update-button">Update</button></a>
         <button id="delete-button" data-id={{book_id}}>Delete</button>
     </section>
-    <section id="update-form-view" class="update-container">
+    <section id="update-form-view" class="update-container detail">
         <form id="update-form">
           <h3>Update Book</h3>
           <input type="text" name="title" value="{{title}}">
@@ -90,6 +91,7 @@
 
   <section id="admin-view" class="container">
     <form id="admin-form">
+      <p>That requires admin privileges. Please enter your passphrase to confirm admin status.</p>
       <input type="number" name="passphrase" placeholder="Enter your PIN">
       <button>Submit</button>
     </form>
